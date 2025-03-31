@@ -1,0 +1,80 @@
+version: '3.7'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: laravel_app
+    user: "1000:1000"
+    ports:
+      - "5173:5173"
+    volumes:
+      - /home/zslab_duckdns/laravel/html:/var/www/html
+      - /etc/localtime:/etc/localtime:ro
+      - ./php/php.ini:/etc/php/7.4/fpm/conf.d/99-timezone.ini
+    networks:
+      - laravel_network
+    depends_on:
+      - db
+      - redis
+
+  web:
+    image: nginx:latest
+    container_name: laravel_web
+    ports:
+      - "80:80"
+    volumes:
+      - /home/zslab_duckdns/laravel/nginx:/etc/nginx/conf.d
+      - /home/zslab_duckdns/laravel/html:/var/www/html
+      - /etc/localtime:/etc/localtime:ro
+    networks:
+      - laravel_network
+    depends_on:
+      - app
+    extra_hosts:
+      - "zslab.duckdns.org:172.18.0.4"  # app 컨테이너 IP로 설정
+
+  db:
+    build:
+      context: .
+      dockerfile: Dockerfile_db
+    container_name: laravel_db
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: laravel
+      MYSQL_USER: docker_user
+      MYSQL_PASSWORD: '@dockeruser#elql'
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./mariadb/my.cnf:/etc/mysql/my.cnf
+      - /etc/localtime:/etc/localtime:ro
+    networks:
+      laravel_network:
+        ipv4_address: 172.18.0.3
+    ports:
+      - "3306:3306"
+        #    command: --default-time-zone='Asia/Seoul'
+
+  redis:
+    image: redis:alpine
+    container_name: laravel_redis
+    networks:
+      - laravel_network
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+      - /etc/localtime:/etc/localtime:ro
+    command: ["redis-server", "--save", "900", "1", "--loglevel", "warning"]
+
+networks:
+  laravel_network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.18.0.0/16
+
+volumes:
+  db_data:
+  redis_data:

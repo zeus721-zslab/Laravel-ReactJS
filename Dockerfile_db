@@ -1,0 +1,16 @@
+# MariaDB 기반 이미지 사용
+FROM mariadb:10.5
+
+# 시스템 패키지 업데이트 및 필수 패키지 설치
+RUN apt-get update && apt-get install -y \
+    nano \
+    vim \
+    && rm -rf /var/lib/apt/lists/*  # 설치 후 캐시 정리
+
+#RUN ln -snf /usr/share/zoneinfo/Asia/Seoul /etc/localtime && echo "Asia/Seoul" > /etc/timezone
+
+# init.sql 파일을 컨테이너의 /docker-entrypoint-initdb.d/ 폴더로 복사
+COPY ./mariadb/init.sql /docker-entrypoint-initdb.d/
+COPY ./mariadb/my.cnf /etc/mysql/my.cnf
+
+
