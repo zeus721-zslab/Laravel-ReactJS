@@ -39,6 +39,7 @@ export default function Dashboard({laravelVersion, phpVersion}) {
                                 <li>TailWind</li>
                             </ul>
 
+                            <div>GIT Push</div>
 
                         </div>
                     </div>
