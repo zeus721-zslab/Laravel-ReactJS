@@ -23,10 +23,14 @@ use Inertia\Inertia;
 
 Route::get('/', function () { return redirect()->route('dashboard'); });
 Route::get('/dashboard', function () {
+
+    $deploymentTime = env('DEPLOYMENT_TIME', 'N/A'); // 환경 변수가 없으면 'N/A'를 기본값으로 사용
     return Inertia::render('Dashboard' , [
         'laravelVersion' => Application::VERSION,
         'phpVersion' => PHP_VERSION,
+        'deploymentTime'   => $deploymentTime
     ]);
+
 })->name('dashboard');
 
 Route::get('/posts/list', [PostController::class, 'list'])->name('posts.list');

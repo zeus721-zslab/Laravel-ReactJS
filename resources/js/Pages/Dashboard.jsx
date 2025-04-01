@@ -1,7 +1,7 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { Head } from '@inertiajs/react';
 
-export default function Dashboard({laravelVersion, phpVersion}) {
+export default function Dashboard({laravelVersion, phpVersion , deploymentTime}) {
     return (
         <AuthenticatedLayout
             header={
@@ -25,6 +25,9 @@ export default function Dashboard({laravelVersion, phpVersion}) {
                                 <li>Marid DB : 10.5.28-MariaDB-ubu2004 - <b>Container</b></li>
                                 <li>Redis DB : Redis server v=7.4.2 - <b>Container</b></li>
                                 <li>WebServer : nginx version: nginx/1.27.4 - <b>Container</b></li>
+
+                                <li>CI/CD : GitAction</li>
+
                             </ul>
 
 
@@ -39,8 +42,12 @@ export default function Dashboard({laravelVersion, phpVersion}) {
                                 <li>TailWind</li>
                             </ul>
 
-                            <div>GIT Push[Modified 250401104600]</div>
+                        </div>
+                    </div>
 
+                    <div className="overflow-hidden bg-white shadow-sm sm:rounded-lg">
+                        <div className="p-6 text-gray-900">
+                            <span>GIT Push[Modified {deploymentTime}]</span>
                         </div>
                     </div>
                 </div>
