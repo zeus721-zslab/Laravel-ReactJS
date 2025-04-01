@@ -25,8 +25,6 @@ export default function Dashboard({laravelVersion, phpVersion , deploymentTime})
 
     const RepositoryUrl = 'https://github.com/zeus721-zslab/Laravel-ReactJS';
 
-
-
     return (
         <AuthenticatedLayout
             header={
@@ -42,12 +40,14 @@ export default function Dashboard({laravelVersion, phpVersion , deploymentTime})
                     <div className="overflow-hidden bg-white shadow-sm sm:rounded-lg">
                         <div className="p-6 text-gray-900">
 
+                            {/**/}
                             <a href={RepositoryUrl} target="_blank" rel="noopener noreferrer" // 보안 및 성능 향상
                                className="rounded-md py-3 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white">
                                 Public Repository&nbsp;{svgIcon}
                             </a>
 
-                            <h5 className="font-bold mt-4">System Configure</h5>
+                            {/**/}
+                            <h5 className="font-bold mt-4">@System Configure</h5>
                             <ul className="list-disc ps-5 mt-4">
                                 <li>Docker : Docker version 28.0.1</li>
                                 <li>Docker-compose : docker-compose version 1.29.2</li>
@@ -55,19 +55,33 @@ export default function Dashboard({laravelVersion, phpVersion , deploymentTime})
                                 <li>Marid DB : 10.5.28-MariaDB-ubu2004 - <b>Container</b></li>
                                 <li>Redis DB : Redis server v=7.4.2 - <b>Container</b></li>
                                 <li>WebServer : nginx version: nginx/1.27.4 - <b>Container</b></li>
-                                <li>CI/CD : GitAction </li>
+                                <li>CI/CD : GitAction</li>
                             </ul>
 
-
+                            {/**/}
                             <div className="border mt-4"></div>
-
-                            <h5 className="font-bold mt-4">Application</h5>
-
+                            <h5 className="font-bold mt-4">@Application</h5>
                             <ul className="list-disc ps-5 mt-4">
                                 <li>Laravel : v{laravelVersion}</li>
                                 <li>Inertia2</li>
                                 <li>Reactjs</li>
                                 <li>TailWind</li>
+                            </ul>
+
+                            {/**/}
+                            <div className="border mt-4"></div>
+                            <h5 className="font-bold mt-4">@Library</h5>
+                            <ul className="list-disc ps-5 mt-4">
+                                <li>Auth : laravel/sanctum ^4.0</li>
+                                <li>Build Tool : laravel-vite-plugin ^1.2.0</li>
+                            </ul>
+
+                            {/**/}
+                            <div className="border mt-4"></div>
+                            <h5 className="font-bold mt-4">@TODO</h5>
+                            <ul className="list-disc ps-5 mt-4">
+                                <li>set Docker Scaling</li>
+                                <li>use Docker Swarm</li>
                             </ul>
 
                         </div>
