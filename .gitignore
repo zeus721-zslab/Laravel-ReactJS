@@ -23,3 +23,4 @@ yarn-error.log
 /.zed
 .ssh/
 deploy.sh
+schema.sql
