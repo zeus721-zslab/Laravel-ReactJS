@@ -1,5 +1,5 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
-import {Head, Link} from '@inertiajs/react';
+import {Head} from '@inertiajs/react';
 
 export default function Dashboard({laravelVersion, phpVersion , deploymentTime}) {
 
@@ -80,8 +80,8 @@ export default function Dashboard({laravelVersion, phpVersion , deploymentTime})
                             <div className="border mt-4"></div>
                             <h5 className="font-bold mt-4">@TODO</h5>
                             <ul className="list-disc ps-5 mt-4">
-                                <li>set Docker Scaling</li>
-                                <li>use Docker Swarm</li>
+                                <li>Docker scale</li>
+                                <li>Docker Swarm | Kubernetes</li>
                             </ul>
 
                         </div>
