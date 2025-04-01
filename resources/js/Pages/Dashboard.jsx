@@ -23,6 +23,9 @@ export default function Dashboard({laravelVersion, phpVersion , deploymentTime})
         </svg>
     );
 
+    const RepositoryUrl = 'https://github.com/zeus721-zslab/Laravel-ReactJS';
+
+
 
     return (
         <AuthenticatedLayout
@@ -39,10 +42,10 @@ export default function Dashboard({laravelVersion, phpVersion , deploymentTime})
                     <div className="overflow-hidden bg-white shadow-sm sm:rounded-lg">
                         <div className="p-6 text-gray-900">
 
-                            <Link href="https://github.com/zeus721-zslab/Laravel-ReactJS"
-                                  className="rounded-md py-3 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white">
+                            <a href={RepositoryUrl} target="_blank" rel="noopener noreferrer" // 보안 및 성능 향상
+                               className="rounded-md py-3 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white">
                                 Public Repository&nbsp;{svgIcon}
-                            </Link>
+                            </a>
 
                             <h5 className="font-bold mt-4">System Configure</h5>
                             <ul className="list-disc ps-5 mt-4">
