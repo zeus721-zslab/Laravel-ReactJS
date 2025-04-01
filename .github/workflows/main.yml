@@ -20,11 +20,11 @@ jobs:
           mkdir -p ~/.ssh
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa  # GitHub Secrets에서 SSH 키 가져오기
           chmod 600 ~/.ssh/id_rsa
-          ssh-keyscan -H 218.232.94.150 >> ~/.ssh/known_hosts  # 서버의 SSH 공개 키를 known_hosts에 추가
+          ssh-keyscan -H ${{ secrets.SERVER_IP }} >> ~/.ssh/known_hosts  # 서버의 SSH 공개 키를 known_hosts에 추가
           # id_rsa.pub 대신 known_hosts를 사용합니다.
 
       # 3. SSH를 통해 온프레미스 서버에서 Git pull을 실행
       - name: Pull latest code on on-prem server
         run: |
-          ssh -o StrictHostKeyChecking=no zslab_duckdns@218.232.94.150 "
+          ssh -o StrictHostKeyChecking=no zslab_duckdns@${{ secrets.SERVER_IP }} "
             cd /home/zslab_duckdns/laravel/html && ./deploy.sh"  # 온프레미스 서버에서 Git pull 및 빌드 명령어 실행
