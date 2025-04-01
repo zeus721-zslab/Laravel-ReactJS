@@ -34,9 +34,7 @@ const Edit = ({ posts }) => {
 
         <AuthenticatedLayout
             header={
-                <h2 className="text-xl font-semibold leading-tight text-gray-800">
-                    Edit Post
-                </h2>
+                <h2 className="text-xl font-semibold leading-tight text-gray-800"> Edit Post </h2>
             }
         >
             <Head title="Edit Posts" />
