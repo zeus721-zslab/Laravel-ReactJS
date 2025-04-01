@@ -1,10 +1,9 @@
 // resources/js/Pages/Posts/Create.jsx
-import React, { useState } from 'react';
-import {Head, Link, router , useForm} from '@inertiajs/react';
+import React from 'react';
+import {Head, useForm} from '@inertiajs/react';
 import TextInput from '@/Components/TextInput';
 import TextArea from '@/Components/TextArea';
 import PrimaryButton from '@/Components/PrimaryButton';
-import axios from 'axios';
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.jsx";
 import InputLabel from "@/Components/InputLabel.jsx";
 import InputError from "@/Components/InputError.jsx";
@@ -21,7 +20,7 @@ const Create = () => {
         post('/posts');
     };
 
-    const goBack = (e) => {
+    const goBack = () => {
         window.history.back(-1);
     };
 
@@ -43,7 +42,7 @@ const Create = () => {
 
                         <div className="p-6 text-gray-900">
                             <h1>새 게시글 작성</h1>
-                            <form onSubmit={handleSubmit} className="flex flex-col gap-3 items-start mt-5 w-96">
+                            <form onSubmit={handleSubmit} className="flex flex-col gap-3 items-start mt-5 lg:w-96">
                                 <div className="w-full">
                                     <InputLabel htmlFor="title" value="제목"/>
                                     <TextInput
