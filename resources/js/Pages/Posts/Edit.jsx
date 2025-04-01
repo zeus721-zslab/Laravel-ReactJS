@@ -1,13 +1,12 @@
 // resources/js/Pages/Posts/Edit.jsx
-
 import {Head, useForm} from '@inertiajs/react';
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.jsx";
-
 import InputLabel from '@/Components/InputLabel.jsx';
 import TextArea from '@/Components/TextArea.jsx';
 import TextInput from '@/Components/TextInput.jsx';
 import PrimaryButton from "@/Components/PrimaryButton.jsx";
 import SecondaryButton from "@/Components/SecondaryButton.jsx";
+import InputError from "@/Components/InputError.jsx";
 
 
 const Edit = ({ posts }) => {
@@ -21,12 +20,12 @@ const Edit = ({ posts }) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         patch(`/posts/${posts.id}`,{
-            onSuccess : (data) => {
+            onSuccess : () => {
             }
         });
     };
 
-    const goBack = (e) => {
+    const goBack = () => {
         window.history.back(-1);
     };
 
@@ -49,7 +48,7 @@ const Edit = ({ posts }) => {
 
                         <div className="p-6 text-gray-900">
                             <h1>새 게시글 작성</h1>
-                            <form onSubmit={handleSubmit} className="flex flex-col gap-3 items-start mt-5 w-96">
+                            <form onSubmit={handleSubmit} className="flex flex-col gap-3 items-start mt-5 lg:w-96">
                                 <div className="w-full">
                                     <InputLabel htmlFor="title" value="제목"/>
                                     <TextInput
@@ -62,6 +61,7 @@ const Edit = ({ posts }) => {
                                         placeholder="제목을 입력해주세요!"
                                         required
                                     />
+                                    <InputError message={errors.title} className="mt-2"/>
                                 </div>
                                 <div className="w-full">
                                     <InputLabel htmlFor="title" value="내용"/>
@@ -76,6 +76,7 @@ const Edit = ({ posts }) => {
                                         rows={6}
                                         required
                                     />
+                                    <InputError message={errors.body} className="mt-2"/>
                                 </div>
                                 <div className="mt-4 w-full flex justify-between">
                                     <PrimaryButton type="submit" disabled={processing}>
