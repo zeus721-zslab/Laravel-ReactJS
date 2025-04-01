@@ -14,6 +14,12 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      # 1.5. 업데이트 시간 기록
+      - name: Set deployment timestamp as environment variable
+        run: |
+          DEPLOYMENT_TIME=$(date '+%Y-%m-%d %H:%M:%S')
+          echo "DEPLOYMENT_TIME=$DEPLOYMENT_TIME" >> $GITHUB_ENV
+
       # 2. SSH 설정: SSH 키를 사용하여 온프레미스 서버에 연결할 수 있도록 설정
       - name: Set up SSH key
         run: |
