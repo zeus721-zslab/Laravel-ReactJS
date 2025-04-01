@@ -2,6 +2,28 @@ import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import {Head, Link} from '@inertiajs/react';
 
 export default function Dashboard({laravelVersion, phpVersion , deploymentTime}) {
+
+    const svgIcon = (
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 20 20"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            width="15" // 원하는 가로 크기
+            height="15" // 원하는 세로 크기
+            style={{ display: 'inline-block' }}
+
+        >
+            <path d="M15 10v6a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h6"></path>
+            <polyline points="12 3 18 3 18 9"></polyline>
+            <line x1="8" y1="11" x2="18" y2="3"></line>
+        </svg>
+    );
+
+
     return (
         <AuthenticatedLayout
             header={
@@ -17,11 +39,12 @@ export default function Dashboard({laravelVersion, phpVersion , deploymentTime})
                     <div className="overflow-hidden bg-white shadow-sm sm:rounded-lg">
                         <div className="p-6 text-gray-900">
 
-                            <Link href="https://github.com/zeus721-zslab/Laravel-ReactJS" className="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white">
-                                Public Repository
+                            <Link href="https://github.com/zeus721-zslab/Laravel-ReactJS"
+                                  className="rounded-md py-3 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white">
+                                Public Repository&nbsp;{svgIcon}
                             </Link>
 
-                            <h5 className="font-bold">System Configure</h5>
+                            <h5 className="font-bold mt-4">System Configure</h5>
                             <ul className="list-disc ps-5 mt-4">
                                 <li>Docker : Docker version 28.0.1</li>
                                 <li>Docker-compose : docker-compose version 1.29.2</li>
