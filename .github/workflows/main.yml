@@ -26,5 +26,5 @@ jobs:
       # 3. SSH를 통해 온프레미스 서버에서 Git pull을 실행
       - name: Pull latest code on on-prem server
         run: |
-          ssh -o StrictHostKeyChecking=no zeus721-zslab@218.232.94.150 "
+          ssh -o StrictHostKeyChecking=no zslab_duckdns@218.232.94.150 "
             cd /home/zslab_duckdns/laravel/html && ./deploy.sh"  # 온프레미스 서버에서 Git pull 및 빌드 명령어 실행
