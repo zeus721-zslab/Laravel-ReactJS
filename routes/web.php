@@ -24,7 +24,10 @@ use Inertia\Inertia;
 Route::get('/', function () { return redirect()->route('dashboard'); });
 Route::get('/dashboard', function () {
 
-    $deploymentTime = env('DEPLOYMENT_TIME', 'N/A'); // 환경 변수가 없으면 'N/A'를 기본값으로 사용
+    $deploymentTime = 'N/A';
+    $filePath = storage_path('deployment_time.txt');
+    if (File::exists($filePath)) $deploymentTime = trim(File::get($filePath));
+
     return Inertia::render('Dashboard' , [
         'laravelVersion' => Application::VERSION,
         'phpVersion' => PHP_VERSION,
