@@ -4,7 +4,7 @@
 - Docker : Docker version 28.0.1
 - Docker-compose : docker-compose version 1.29.2
 - PHP : 8.4.5 - Container
-- Marid DB : 10.5.28-MariaDB-ubu2004 - Container
+- Maria DB : 10.5.28-MariaDB-ubu2004 - Container
 - Redis DB : Redis server v=7.4.2 - Container
 - WebServer : nginx version: nginx/1.27.4 - Container
 - CI/CD : GitAction
