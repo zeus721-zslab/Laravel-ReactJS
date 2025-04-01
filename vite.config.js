@@ -4,6 +4,7 @@ import react from '@vitejs/plugin-react';
 
 export default defineConfig(({ command, mode }) => {
 
+    console.log(command);
     const env = loadEnv(mode, process.cwd(), '');
 
     return {
@@ -29,26 +30,3 @@ export default defineConfig(({ command, mode }) => {
     }
 
 });
-/*
-export default defineConfig({
-    server: {
-        https: false,  // HTTPS 비활성화
-        host: '0.0.0.0',  // 모든 IP에서 Vite 서버에 접근 가능하도록 설정
-        hmr: {
-            host: 'zslab-stg.duckdns.org',  // HMR 엔드포인트
-            protocol: 'ws',  // WebSocket 프로토콜 사용
-            port: 5174,  // HMR 포트 설정
-        },
-        port: 5174,
-
-    },
-    plugins: [
-        laravel({
-            input: 'resources/js/app.jsx',
-            refresh: true,
-        }),
-        react(),
-    ],
-});
-
-*/
