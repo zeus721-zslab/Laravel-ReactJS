@@ -18,7 +18,7 @@ jobs:
       - name: Record deployment timestamp to file
         run: |
           DEPLOYMENT_TIME=$(date '+%Y-%m-%d %H:%M:%S')
-          echo "$DEPLOYMENT_TIME" > storage/deployment_time.txt
+          ssh -o StrictHostKeyChecking=no zslab_duckdns@${{ secrets.SERVER_IP }} "echo '$DEPLOYMENT_TIME' > /home/zslab_duckdns/laravel/html/storage/deployment_time.txt"
 
       # 2. SSH 설정: SSH 키를 사용하여 온프레미스 서버에 연결할 수 있도록 설정
       - name: Set up SSH key
