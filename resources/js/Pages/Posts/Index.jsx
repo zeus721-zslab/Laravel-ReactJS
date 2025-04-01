@@ -1,8 +1,8 @@
 // resources/js/Pages/Posts/Index.jsx
 
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
-import {Head, Link, router, useForm, usePage} from '@inertiajs/react';
+import {Head} from '@inertiajs/react';
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.jsx";
 import PrimaryButton from "@/Components/PrimaryButton.jsx";
 import DangerButton from "@/Components/DangerButton.jsx";
@@ -32,9 +32,7 @@ const Index = ( lists ) => {
 
         <AuthenticatedLayout
             header={
-                <h2 className="text-xl font-semibold leading-tight text-gray-800">
-                    Lists Posts
-                </h2>
+                <h2 className="text-xl font-semibold leading-tight text-gray-800"> Posts List </h2>
             }
         >
             <Head title="Posts" />
