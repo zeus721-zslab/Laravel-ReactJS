@@ -1,0 +1,30 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main  # main 브랜치에 푸시될 때마다 실행
+
+jobs:
+  deploy:
+    runs-on: self-hosted  # 자체 호스팅 러너에서 실행하도록 지정
+
+    steps:
+      # 1. 저장소 체크아웃 (자체 호스팅 러너에 GitHub의 최신 코드를 가져옴)
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      # 2. SSH 설정: SSH 키를 사용하여 온프레미스 서버에 연결할 수 있도록 설정
+      - name: Set up SSH key
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa  # GitHub Secrets에서 SSH 키 가져오기
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -H 218.232.94.150 >> ~/.ssh/known_hosts  # 서버의 SSH 공개 키를 known_hosts에 추가
+          # id_rsa.pub 대신 known_hosts를 사용합니다.
+
+      # 3. SSH를 통해 온프레미스 서버에서 Git pull을 실행
+      - name: Pull latest code on on-prem server
+        run: |
+          ssh -o StrictHostKeyChecking=no zeus721-zslab@218.232.94.150 "
+            cd /home/zslab_duckdns/laravel/html && ./deploy.sh"  # 온프레미스 서버에서 Git pull 및 빌드 명령어 실행
