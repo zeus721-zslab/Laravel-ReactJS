@@ -1,23 +1,25 @@
-import { defineConfig , loadEnv } from 'vite';
+import { defineConfig, loadEnv } from 'vite';
 import laravel from 'laravel-vite-plugin';
 import react from '@vitejs/plugin-react';
 
 export default defineConfig(({ command, mode }) => {
+    const env = loadEnv(mode, process.cwd(), '');
 
     console.log(command);
-    const env = loadEnv(mode, process.cwd(), '');
+    console.log(mode === 'development' ? env.SANCTUM_STATEFUL_DOMAINS_STG : env.SANCTUM_STATEFUL_DOMAINS);
+    console.log(mode === 'development' ? parseInt(env.VITE_APP_STG_PORT) : parseInt(env.VITE_APP_PORT));
 
     return {
         server: {
-            https: false,  // HTTPS 비활성화
-            host: '0.0.0.0',  // 모든 IP에서 Vite 서버에 접근 가능하도록 설정
+            http : mode === 'development',
+            https: mode !== 'development', // HTTPS 옵션 객체 전달
+            host: '0.0.0.0',
             hmr: {
-                host: mode === 'development' ? env.SANCTUM_STATEFUL_DOMAINS_STG : env.SANCTUM_STATEFUL_DOMAINS,  // HMR 엔드포인트
-                protocol: 'ws',  // WebSocket 프로토콜 사용
-                port: mode === 'development' ? parseInt(env.VITE_APP_STG_PORT) : parseInt(env.VITE_APP_PORT),  // HMR 포트 설정
+                host: mode === 'development' ? env.SANCTUM_STATEFUL_DOMAINS_STG : env.SANCTUM_STATEFUL_DOMAINS,
+                protocol: 'wss',
+                port: mode === 'development' ? parseInt(env.VITE_APP_STG_PORT) : parseInt(env.VITE_APP_PORT),
             },
             port: mode === 'development' ? parseInt(env.VITE_APP_STG_PORT) : parseInt(env.VITE_APP_PORT),
-
         },
         plugins: [
             laravel({
@@ -26,7 +28,5 @@ export default defineConfig(({ command, mode }) => {
             }),
             react(),
         ],
-
-    }
-
+    };
 });
