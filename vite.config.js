@@ -16,7 +16,7 @@ export default defineConfig(({ command, mode }) => {
             host: '0.0.0.0',
             hmr: {
                 host: mode === 'development' ? env.SANCTUM_STATEFUL_DOMAINS_STG : env.SANCTUM_STATEFUL_DOMAINS,
-                protocol: 'wss',
+                protocol: mode === 'development' ? 'ws' : 'wss' ,
                 port: mode === 'development' ? parseInt(env.VITE_APP_STG_PORT) : parseInt(env.VITE_APP_PORT),
             },
             port: mode === 'development' ? parseInt(env.VITE_APP_STG_PORT) : parseInt(env.VITE_APP_PORT),
