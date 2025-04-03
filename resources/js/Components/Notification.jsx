@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import socketIOClient from 'socket.io-client';
-
-const ENDPOINT = "http://zslab-stg.duckdns.org";
+import { usePage } from '@inertiajs/react';
 
 function Notification() {
     const [notification, setNotification] = useState(null);
+    const { appUrl } = usePage().props;
+    const ENDPOINT = appUrl; // 또는 `${appUrl}/socket.io`
 
     useEffect(() => {
         const socket = socketIOClient(ENDPOINT);
