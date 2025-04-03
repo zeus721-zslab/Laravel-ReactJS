@@ -25,7 +25,8 @@ const Edit = ({ posts }) => {
         });
     };
 
-    const goBack = () => {
+    const goBack = (e) => {
+        e.preventDefault();
         window.history.back(-1);
     };
 
@@ -34,7 +35,9 @@ const Edit = ({ posts }) => {
 
         <AuthenticatedLayout
             header={
-                <h2 className="text-xl font-semibold leading-tight text-gray-800"> Edit Post </h2>
+                <h2 className="text-xl font-semibold leading-tight text-gray-800">
+                    Edit Post
+                </h2>
             }
         >
             <Head title="Edit Posts" />
