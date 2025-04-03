@@ -51,7 +51,8 @@ export default function Dashboard({laravelVersion, phpVersion , deploymentTime})
                             <ul className="list-disc ps-5 mt-4">
                                 <li>Docker : Docker version 28.0.1</li>
                                 <li>Docker-compose : docker-compose version 1.29.2</li>
-                                <li>PHP : {phpVersion} - <b>Container</b></li>
+                                <li>Web Application : PHP {phpVersion} - <b>Container</b></li>
+                                <li>Staging Web Application : PHP {phpVersion} - <b>Container</b></li>
                                 <li>Maria DB : 10.5.28-MariaDB-ubu2004 - <b>Container</b></li>
                                 <li>Redis DB : Redis server v=7.4.2 - <b>Container</b></li>
                                 <li>WebServer : nginx version: nginx/1.27.4 - <b>Container</b></li>
@@ -61,12 +62,13 @@ export default function Dashboard({laravelVersion, phpVersion , deploymentTime})
 
                             {/**/}
                             <div className="border mt-4"></div>
-                            <h5 className="font-bold mt-4">@Application</h5>
+                            <h5 className="font-bold mt-4">@Web Application</h5>
                             <ul className="list-disc ps-5 mt-4">
                                 <li>Laravel : v{laravelVersion}</li>
                                 <li>Inertia2</li>
                                 <li>Reactjs</li>
                                 <li>TailWind</li>
+                                <li>NodeJS : ExpressJS , SocketIO</li>
                             </ul>
 
                             {/**/}
@@ -79,7 +81,7 @@ export default function Dashboard({laravelVersion, phpVersion , deploymentTime})
 
                             {/**/}
                             <div className="border mt-4"></div>
-                            <h5 className="font-bold mt-4">@Feature</h5>
+                            <h5 className="font-bold mt-4">@Features</h5>
                             <ul className="list-disc ps-5 mt-4">
                                 <li>Real Time System Using NodeJS SocketIO</li>
                             </ul>
