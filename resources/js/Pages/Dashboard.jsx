@@ -52,12 +52,12 @@ export default function Dashboard({laravelVersion, phpVersion , deploymentTime})
                                 <li>Docker : Docker version 28.0.1</li>
                                 <li>Docker-compose : docker-compose version 1.29.2</li>
                                 <li>Web Application : PHP {phpVersion} - <b>Container</b></li>
-                                <li>Staging Web Application : PHP {phpVersion} - <b>Container</b></li>
+                                <li>Socket Application : NodeJS Express - <b>Container</b></li>
                                 <li>Maria DB : 10.5.28-MariaDB-ubu2004 - <b>Container</b></li>
                                 <li>Redis DB : Redis server v=7.4.2 - <b>Container</b></li>
-                                <li>WebServer : nginx version: nginx/1.27.4 - <b>Container</b></li>
-                                <li>SocketIO Server : NodeJS Express - <b>Container</b></li>
+                                <li>WebServer : NGINX version: nginx/1.27.4 - <b>Container</b></li>
                                 <li>CI/CD : GitAction</li>
+                                <li>Staging 서버 분리(WebApp & NodeJS)</li>
                             </ul>
 
                             {/**/}
