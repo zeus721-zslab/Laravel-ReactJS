@@ -26,20 +26,9 @@ export default function AuthenticatedLayout({ header, children }) {
                             </div>
 
                             <div className="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                                <NavLink
-                                    href={route('dashboard')}
-                                    active={route().current('dashboard')}
-                                >
-                                    Dashboard
-                                </NavLink>
-
-                                <NavLink
-                                    href={route('posts.list')}
-                                    active={url.startsWith('/posts')}
-                                >
-                                    Posts&nbsp;[CRUD Test]
-                                </NavLink>
-
+                                <NavLink href={route('dashboard')} active={route().current('dashboard')} > Dashboard </NavLink>
+                                <NavLink href={route('posts.list')} active={url.startsWith('/posts')} > Posts&nbsp;[CRUD] </NavLink>
+                                <NavLink href={route('changeImg')} active={url.startsWith('/changeImg')} > Change Image&nbsp;[Queue] </NavLink>
                             </div>
                         </div>
 

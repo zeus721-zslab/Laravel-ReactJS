@@ -55,6 +55,7 @@ export default function Dashboard({laravelVersion, phpVersion , deploymentTime})
                                 <li>Maria DB : 10.5.28-MariaDB-ubu2004 - <b>Container</b></li>
                                 <li>Redis DB : Redis server v=7.4.2 - <b>Container</b></li>
                                 <li>WebServer : nginx version: nginx/1.27.4 - <b>Container</b></li>
+                                <li>SocketIO Server : NodeJS Express - <b>Container</b></li>
                                 <li>CI/CD : GitAction</li>
                             </ul>
 
@@ -78,9 +79,15 @@ export default function Dashboard({laravelVersion, phpVersion , deploymentTime})
 
                             {/**/}
                             <div className="border mt-4"></div>
+                            <h5 className="font-bold mt-4">@Feature</h5>
+                            <ul className="list-disc ps-5 mt-4">
+                                <li>Real Time System Using NodeJS SocketIO</li>
+                            </ul>
+
+                            {/**/}
+                            <div className="border mt-4"></div>
                             <h5 className="font-bold mt-4">@TODO</h5>
                             <ul className="list-disc ps-5 mt-4">
-                                <li><b>[ING]&nbsp;</b>Real Time System using Laravel Queue & NodeJS & Socket.io - <b>Container</b></li>
                                 <li>Docker scale</li>
                                 <li>Docker Swarm | Kubernetes</li>
                             </ul>
