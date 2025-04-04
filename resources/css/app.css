@@ -1,8 +1,3 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-
-.max-w-8xl{
-    max-width: 90rem;
-}

@@ -2,17 +2,14 @@
 
 import React, { useState } from 'react';
 import axios from 'axios';
-import {Head, router} from '@inertiajs/react';
+import {Head, router, usePage} from '@inertiajs/react';
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.jsx";
 import PrimaryButton from "@/Components/PrimaryButton.jsx";
 import DangerButton from "@/Components/DangerButton.jsx";
 import SecondaryButton from "@/Components/SecondaryButton.jsx";
 
-import '../../bootstrap.js';
-
 const Index = ( lists ) => {
-
-    const auth_user = window.AuthUser();
+    const auth_user = usePage().props?.auth?.user;
     const [posts, setPosts] = useState(lists.lists);
 
     // 삭제 함수

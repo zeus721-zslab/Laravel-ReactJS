@@ -1,14 +1,11 @@
-import {Head} from '@inertiajs/react';
+import {Head, usePage} from '@inertiajs/react';
 import { useState } from 'react';
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.jsx";
-import Notification from "@/Components/Notification.jsx";
 import axios from 'axios'; // axios import 추가
-
-import '../../bootstrap.js';
 
 const Index = ( ) => {
 
-        const auth_user = window.AuthUser();
+        const auth_user = usePage().props.auth.user;
         const [selectedImage, setSelectedImage] = useState(null);
         const [uploadMessage, setUploadMessage] = useState('');
 
@@ -93,8 +90,6 @@ const Index = ( ) => {
                     </div>
                 </div>
             </div>
-
-            <Notification /> {/* Notification 컴포넌트 추가 */}
 
         </AuthenticatedLayout>
     );

@@ -3,14 +3,22 @@ import Dropdown from '@/Components/Dropdown';
 import NavLink from '@/Components/NavLink';
 import ResponsiveNavLink from '@/Components/ResponsiveNavLink';
 import { Link, usePage } from '@inertiajs/react';
-import { useState } from 'react';
+import {useEffect, useState} from 'react';
+import { useSocket } from '@/Contexts/SocketContext';
+import ImageUploadNotification from '@/Components/ImageUploadNotification'; // 컴포넌트 임포트
 
 export default function AuthenticatedLayout({ header, children }) {
-    const user = window.AuthUser();
+    const page = usePage();
+    const user = page?.props?.auth?.user;
     const url  = usePage().url;
+    const [showingNavigationDropdown, setShowingNavigationDropdown] = useState(false);
+    const { joinRoom } = useSocket();
 
-    const [showingNavigationDropdown, setShowingNavigationDropdown] =
-        useState(false);
+    useEffect(() => {
+        if (user?.id) {
+            joinRoom(user.id);
+        }
+    }, [user?.id, joinRoom]);
 
 
     return (
@@ -155,6 +163,9 @@ export default function AuthenticatedLayout({ header, children }) {
             )}
 
             <main>{children}</main>
+
+            <ImageUploadNotification /> {/* 알림 컴포넌트 추가 */}
+
         </div>
     );
 }
