@@ -91,6 +91,7 @@ export default function Dashboard({laravelVersion, phpVersion , deploymentTime})
                             <h5 className="font-bold mt-4">@TODO</h5>
                             <ul className="list-disc ps-5 mt-4">
                                 <li>ELK</li>
+                                <li>Python & AI 기반 간단 추천 기능</li>
                                 <li>Docker Scaling</li>
                                 <li>Docker Swarm | Kubernetes</li>
                             </ul>
