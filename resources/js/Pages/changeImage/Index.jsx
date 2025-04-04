@@ -57,8 +57,8 @@ const Index = ( ) => {
                             <li>파일 업로드</li>
                             <li>라라벨 컨트롤러에서 파일 Upload 및 REDIS를 통한 Queue생성</li>
                             <li>NodeJS 서버에서 Queue 캐치</li>
-                            <li>간단한 이미지 변환</li>
-                            <li>이미지 변환 후 변환된 파일경로를 2초 뒤 알림처리</li>
+                            <li>NodeJS 간단한 이미지 변환</li>
+                            <li>이미지 변환 후 변환된 파일경로를 2초 뒤 Laravel ReactJS로 알림</li>
                         </ul>
                     </div>
                     <div className="overflow-hidden bg-white shadow-sm sm:rounded-lg p-6 mt-4">
