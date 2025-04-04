@@ -23,7 +23,7 @@ class ChangeImg extends Controller
 
         }
 
-        return response()->json(['error' => '업로드된 이미지가 없습니다!!.'], 400);
+        return response()->json(['error' => '업로드된 이미지가 없습니다..'], 400);
     }
 }
 
