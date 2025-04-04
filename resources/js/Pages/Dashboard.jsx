@@ -73,7 +73,7 @@ export default function Dashboard({laravelVersion, phpVersion , deploymentTime})
 
                             {/**/}
                             <div className="border mt-4"></div>
-                            <h5 className="font-bold mt-4">@Library</h5>
+                            <h5 className="font-bold mt-4">@Libraries</h5>
                             <ul className="list-disc ps-5 mt-4">
                                 <li>Auth : laravel/sanctum ^4.0</li>
                                 <li>Build Tool : laravel-vite-plugin ^1.2.0</li>
@@ -90,7 +90,8 @@ export default function Dashboard({laravelVersion, phpVersion , deploymentTime})
                             <div className="border mt-4"></div>
                             <h5 className="font-bold mt-4">@TODO</h5>
                             <ul className="list-disc ps-5 mt-4">
-                                <li>Docker scale</li>
+                                <li>ELK</li>
+                                <li>Docker Scaling</li>
                                 <li>Docker Swarm | Kubernetes</li>
                             </ul>
 
