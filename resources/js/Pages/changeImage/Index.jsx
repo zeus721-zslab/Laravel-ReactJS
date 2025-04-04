@@ -52,6 +52,16 @@ const Index = ( ) => {
             <div className="py-12">
                 <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
                     <div className="overflow-hidden bg-white shadow-sm sm:rounded-lg p-6">
+                        <h5 className={`font-bold`}>진행 프로세스</h5>
+                        <ul className={`list-decimal ps-4 text-sm mt-3 flex flex-col gap-1`}>
+                            <li>파일 업로드</li>
+                            <li>라라벨 컨트롤러에서 파일 Upload 및 REDIS를 통한 Queue생성</li>
+                            <li>NodeJS 서버에서 Queue 캐치</li>
+                            <li>간단한 이미지 변환</li>
+                            <li>이미지 변환 후 변환된 파일경로를 2초 뒤 알림처리</li>
+                        </ul>
+                    </div>
+                    <div className="overflow-hidden bg-white shadow-sm sm:rounded-lg p-6 mt-4">
                         <div>
                             <label htmlFor="image" className="block text-sm font-medium text-gray-700">
                                 이미지 선택
