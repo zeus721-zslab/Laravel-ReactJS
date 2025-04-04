@@ -57,7 +57,7 @@ export default function Dashboard({laravelVersion, phpVersion , deploymentTime})
                                 <li>Redis DB : Redis server v=7.4.2 - <b>Container</b></li>
                                 <li>WebServer : NGINX version: nginx/1.27.4 - <b>Container</b></li>
                                 <li>CI/CD : GitAction</li>
-                                <li>Staging & Production 분리(WebApp & NodeJS)</li>
+                                <li>Staging & Production 분리(WebApp & NodeJS) </li>
                             </ul>
 
                             {/**/}
