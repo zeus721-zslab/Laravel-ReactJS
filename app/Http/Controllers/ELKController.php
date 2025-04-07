@@ -55,7 +55,7 @@ class ELKController extends Controller
                         [ $dateField => ['order' => 'desc'] ]
                     ]
                 ],
-                'size' => 10 // 가져올 문서 개수 제한
+                'size' => 1000 // 가져올 문서 개수 제한
             ];
 
             $response = $elasticsearchClient->search($params);
