@@ -37,6 +37,7 @@ export default function AuthenticatedLayout({ header, children }) {
                                 <NavLink href={route('dashboard')} active={route().current('dashboard')} > Dashboard </NavLink>
                                 <NavLink href={route('posts.list')} active={url.startsWith('/posts')} > Posts&nbsp;[CRUD] </NavLink>
                                 <NavLink href={route('changeImg')} active={url.startsWith('/changeImg')} > Change Image&nbsp;[Queue] </NavLink>
+                                <NavLink href={route('elk')} active={url.startsWith('/ELK')} > ELK </NavLink>
                             </div>
                         </div>
 

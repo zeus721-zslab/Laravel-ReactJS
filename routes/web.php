@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ChangeImg;
+use App\Http\Controllers\ELKController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -24,6 +25,8 @@ Route::get('/posts/list', [PostController::class, 'list'])->name('posts.list');
 Route::get('/changeImg', function(){
     return Inertia::render('changeImage/Index');
 })->name('changeImg');
+
+Route::get('/ELK', [ELKController::class, 'Index'])->name('elk');
 
 /**
  *
