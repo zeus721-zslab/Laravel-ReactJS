@@ -104,6 +104,7 @@ export default function Dashboard({ laravelVersion, phpVersion, deploymentTime }
                             <ul className="mt-4 list-disc ps-5"> {/* 순서 없는 목록 */}
                                 <li>Real Time System Using NodeJS SocketIO</li>
                                 <li>EL & Kibana Page(using Proxy)</li>
+                                <li><b className="text-green-700">[ING]</b>&nbsp;Chatting</li>
                             </ul>
 
                             {/* 구분선 */}
