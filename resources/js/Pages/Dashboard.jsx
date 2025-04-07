@@ -62,49 +62,99 @@ export default function Dashboard({ laravelVersion, phpVersion, deploymentTime }
 
                             {/* 시스템 구성 정보 섹션 */}
                             <h5 className="mt-4 font-bold">@System Configure</h5> {/* 섹션 제목 */}
-                            <ul className="mt-4 list-disc ps-5"> {/* 위쪽 마진, 디스크 불릿, 왼쪽 패딩을 가진 순서 없는 목록 */}
-                                <li>Docker : Docker version 28.0.1</li>
-                                <li>Docker-compose : docker-compose version 1.29.2</li>
+                            <ul className="mt-4 ps-5 flex flex-col gap-2 md:gap-1"> {/* 위쪽 마진, 디스크 불릿, 왼쪽 패딩을 가진 순서 없는 목록 */}
+                                <li className="flex md:flex-row flex-col before:content-['○'] before:absolute before:top-0 before:-left-5 relative">
+                                    <label className="font-bold md:after:content-[':'] after:w-3 after:inline-block after:text-center">Docker</label>
+                                    <span>Docker version 28.0.1</span>
+                                </li>
+                                <li className="flex md:flex-row flex-col before:content-['○'] before:absolute before:top-0 before:-left-5 relative">
+                                    <label className="font-bold md:after:content-[':'] after:w-3 after:inline-block after:text-center">Docker-compose</label>
+                                    <span>docker-compose version 1.29.2</span>
+                                </li>
                                 {/* PHP 버전을 props에서 받아 동적으로 표시 */}
-                                <li>Web Application : PHP {phpVersion} - <b>Container</b></li>
-                                <li>Socket Application : NodeJS Express - <b>Container</b></li>
-                                <li>Maria DB : 10.5.28-MariaDB-ubu2004 - <b>Container</b></li>
-                                <li>Redis DB : Redis server v=7.4.2 - <b>Container</b></li>
-                                <li>WebServer : NGINX version: nginx/1.27.4 - <b>Container</b></li>
-                                <li>CI/CD : GitAction</li>
-                                <li>Staging & Production 분리(WebApp & NodeJS) </li>
+                                <li className="flex md:flex-row flex-col before:content-['○'] before:absolute before:top-0 before:-left-5 relative">
+                                    <label className="font-bold md:after:content-[':'] after:w-3 after:inline-block after:text-center">Web Application</label>
+                                    <span>PHP {phpVersion} - <b>Container</b></span>
+                                </li>
+                                <li className="flex md:flex-row flex-col before:content-['○'] before:absolute before:top-0 before:-left-5 relative">
+                                    <label className="font-bold md:after:content-[':'] after:w-3 after:inline-block after:text-center">Socket Application</label>
+                                    <span>NodeJS Express - <b>Container</b></span>
+                                </li>
+                                <li className="flex md:flex-row flex-col before:content-['○'] before:absolute before:top-0 before:-left-5 relative">
+                                    <label className="font-bold md:after:content-[':'] after:w-3 after:inline-block after:text-center">Maria DB</label>
+                                    <span>10.5.28-MariaDB-ubu2004 - <b>Container</b></span>
+                                </li>
+                                <li className="flex md:flex-row flex-col before:content-['○'] before:absolute before:top-0 before:-left-5 relative">
+                                    <label className="font-bold md:after:content-[':'] after:w-3 after:inline-block after:text-center">Redis DB</label>
+                                    <span>Redis server v=7.4.2 - <b>Container</b></span>
+                                </li>
+                                <li className="flex md:flex-row flex-col before:content-['○'] before:absolute before:top-0 before:-left-5 relative">
+                                    <label className="font-bold md:after:content-[':'] after:w-3 after:inline-block after:text-center">WebServer</label>
+                                    <span>NGINX version: nginx/1.27.4 - <b>Container</b></span>
+                                </li>
+                                <li className="flex md:flex-row flex-col before:content-['○'] before:absolute before:top-0 before:-left-5 relative">
+                                    <label className="font-bold md:after:content-[':'] after:w-3 after:inline-block after:text-center">Elastic Search</label>
+                                    <span>ElasticSearch:8.13.0 - <b>Container</b></span>
+                                </li>
+                                <li className="flex md:flex-row flex-col before:content-['○'] before:absolute before:top-0 before:-left-5 relative">
+                                    <label className="font-bold md:after:content-[':'] after:w-3 after:inline-block after:text-center">LogStash</label>
+                                    <span>LogStash:8.13.0 - <b>Container</b></span>
+                                </li>
+                                <li className="flex md:flex-row flex-col before:content-['○'] before:absolute before:top-0 before:-left-5 relative">
+                                    <label className="font-bold md:after:content-[':'] after:w-3 after:inline-block after:text-center">Kibana</label>
+                                    <span>Kibana:8.13.0 - <b>Container</b></span>
+                                </li>
+                                <li className="flex md:flex-row flex-col before:content-['○'] before:absolute before:top-0 before:-left-5 relative">
+                                    <label className="font-bold md:after:content-[':'] after:w-3 after:inline-block after:text-center">CI/CD</label>
+                                    <span>GitHubAction</span>
+                                </li>
+                                <li className="flex md:flex-row flex-col before:content-['○'] before:absolute before:top-0 before:-left-5 relative">
+                                    <span>Staging & Production 분리(WebApp & NodeJS)</span>
+                                </li>
                             </ul>
 
                             {/* 구분선 */}
                             <div className="mt-4 border"></div>
                             {/* 웹 애플리케이션 기술 스택 섹션 */}
                             <h5 className="mt-4 font-bold">@Web Application</h5> {/* 섹션 제목 */}
-                            <ul className="mt-4 list-disc ps-5"> {/* 순서 없는 목록 */}
+                            <ul className="mt-4 ps-5 flex flex-col gap-2 md:gap-1"> {/* 순서 없는 목록 */}
                                 {/* Laravel 버전을 props에서 받아 동적으로 표시 */}
-                                <li>Laravel : v{laravelVersion}</li>
-                                <li>Inertia2</li>
-                                <li>Reactjs</li>
-                                <li>TailWind</li>
-                                <li>NodeJS : ExpressJS , SocketIO</li>
+                                <li className="flex md:flex-row flex-col before:content-['○'] before:absolute before:top-0 before:-left-5 relative">
+                                    <label className="font-bold md:after:content-[':'] after:w-3 after:inline-block after:text-center">Laravel</label>
+                                    <span>v{laravelVersion}</span>
+                                </li>
+                                <li className="flex md:flex-row flex-col before:content-['○'] before:absolute before:top-0 before:-left-5 relative">Inertia2</li>
+                                <li className="flex md:flex-row flex-col before:content-['○'] before:absolute before:top-0 before:-left-5 relative">Reactjs</li>
+                                <li className="flex md:flex-row flex-col before:content-['○'] before:absolute before:top-0 before:-left-5 relative">TailWind</li>
+                                <li className="flex md:flex-row flex-col before:content-['○'] before:absolute before:top-0 before:-left-5 relative">
+                                    <label className="font-bold md:after:content-[':'] after:w-3 after:inline-block after:text-center">NodeJS</label>
+                                    <span>ExpressJS , SocketIO</span>
+                                </li>
                             </ul>
 
                             {/* 구분선 */}
                             <div className="mt-4 border"></div>
                             {/* 사용된 라이브러리 섹션 */}
                             <h5 className="mt-4 font-bold">@Libraries</h5> {/* 섹션 제목 */}
-                            <ul className="mt-4 list-disc ps-5"> {/* 순서 없는 목록 */}
-                                <li>Auth : laravel/sanctum ^4.0</li>
-                                <li>Build Tool : laravel-vite-plugin ^1.2.0</li>
+                            <ul className="mt-4 ps-5 flex flex-col gap-2 md:gap-1"> {/* 순서 없는 목록 */}
+                                <li className="flex md:flex-row flex-col before:content-['○'] before:absolute before:top-0 before:-left-5 relative">
+                                    <label className="font-bold md:after:content-[':'] after:w-3 after:inline-block after:text-center">Auth</label>
+                                    <span>laravel/sanctum ^4.0</span>
+                                </li>
+                                <li className="flex md:flex-row flex-col before:content-['○'] before:absolute before:top-0 before:-left-5 relative">
+                                    <label className="font-bold md:after:content-[':'] after:w-3 after:inline-block after:text-center">Build Tool</label>
+                                    <span>laravel-vite-plugin ^1.2.0</span>
+                                </li>
                             </ul>
 
                             {/* 구분선 */}
                             <div className="mt-4 border"></div>
                             {/* 주요 기능 섹션 */}
                             <h5 className="mt-4 font-bold">@Features</h5> {/* 섹션 제목 */}
-                            <ul className="mt-4 list-disc ps-5"> {/* 순서 없는 목록 */}
-                                <li>Real Time System Using NodeJS SocketIO</li>
-                                <li>EL & Kibana Page(using Proxy)</li>
-                                <li><b className="text-green-700">[ING]</b>&nbsp;Chatting</li>
+                            <ul className="mt-4 ps-5"> {/* 순서 없는 목록 */}
+                                <li className="flex md:flex-row flex-col before:content-['○'] before:absolute before:top-0 before:-left-5 relative">Real Time System Using NodeJS SocketIO</li>
+                                <li className="flex md:flex-row flex-col before:content-['○'] before:absolute before:top-0 before:-left-5 relative">EL & Kibana Page(using Proxy)</li>
+                                <li className="flex flex-row before:content-['○'] before:absolute before:top-0 before:-left-5 relative"><b className="text-green-700">[ING]</b>&nbsp;Chatting</li>
                             </ul>
 
                             {/* 구분선 */}
@@ -112,12 +162,14 @@ export default function Dashboard({ laravelVersion, phpVersion, deploymentTime }
                             {/* TODO (향후 계획) 섹션 */}
                             <h5 className="mt-4 font-bold">@TODO</h5> {/* 섹션 제목 */}
                             <ul className="mt-4 list-disc ps-5"> {/* 순서 없는 목록 */}
-                                <li>Python & AI 기반 간단 추천 기능</li>
-                                <li>Docker Scaling</li>
-                                <li>Docker Swarm | Kubernetes</li>
+                                <li className="flex md:flex-row flex-col before:content-['○'] before:absolute before:top-0 before:-left-5 relative">Python & AI 기반 간단 추천 기능</li>
+                                <li className="flex md:flex-row flex-col before:content-['○'] before:absolute before:top-0 before:-left-5 relative">Docker Scaling</li>
+                                <li className="flex md:flex-row flex-col before:content-['○'] before:absolute before:top-0 before:-left-5 relative">Docker Swarm | Kubernetes
+                                </li>
                             </ul>
 
-                        </div> {/* 카드 내부 컨텐츠 끝 */}
+                        </div>
+                        {/* 카드 내부 컨텐츠 끝 */}
                     </div> {/* 첫 번째 정보 카드 끝 */}
 
                     {/* 배포 시간 정보 카드 */}
