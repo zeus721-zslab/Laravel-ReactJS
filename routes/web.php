@@ -27,6 +27,8 @@ Route::get('/changeImg', function(){
 })->name('changeImg');
 
 Route::get('/ELK', [ELKController::class, 'Index'])->name('elk');
+// ELK 데이터 추가를 위한 API 라우트 (POST 방식)
+Route::post('/ELK/add-data', [ELKController::class, 'store']);
 
 /**
  *
@@ -44,6 +46,8 @@ Route::middleware('auth')->group(function () {
 
     //Change Image
     Route::post('/changeImg/upload', [ChangeImg::class, 'upload']);
+
+
 
 });
 

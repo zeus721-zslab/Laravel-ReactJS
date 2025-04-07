@@ -103,6 +103,7 @@ export default function Dashboard({ laravelVersion, phpVersion, deploymentTime }
                             <h5 className="mt-4 font-bold">@Features</h5> {/* 섹션 제목 */}
                             <ul className="mt-4 list-disc ps-5"> {/* 순서 없는 목록 */}
                                 <li>Real Time System Using NodeJS SocketIO</li>
+                                <li>EL & Kibana Page(using Proxy)</li>
                             </ul>
 
                             {/* 구분선 */}
@@ -110,7 +111,6 @@ export default function Dashboard({ laravelVersion, phpVersion, deploymentTime }
                             {/* TODO (향후 계획) 섹션 */}
                             <h5 className="mt-4 font-bold">@TODO</h5> {/* 섹션 제목 */}
                             <ul className="mt-4 list-disc ps-5"> {/* 순서 없는 목록 */}
-                                <li>ELK</li>
                                 <li>Python & AI 기반 간단 추천 기능</li>
                                 <li>Docker Scaling</li>
                                 <li>Docker Swarm | Kubernetes</li>
