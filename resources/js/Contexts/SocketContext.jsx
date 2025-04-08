@@ -7,7 +7,7 @@ const SocketContext = createContext(null);
 export const useSocket = () => useContext(SocketContext);
 
 export const SocketProvider = ({ children , endpoint }) => {
-    const SOCKET_URL  = endpoint;
+    const SOCKET_URL  = endpoint+':3001';
     const [socket, setSocket] = useState(null);
     const [socketId, setSocketId] = useState(null);
 
@@ -19,7 +19,9 @@ export const SocketProvider = ({ children , endpoint }) => {
     }, [socket]);
 
     useEffect(() => {
-        const newSocket = socketIOClient(SOCKET_URL);
+        const newSocket = socketIOClient(SOCKET_URL,{ // <-- 옵션 객체 추가
+            withCredentials: true // <-- 이 옵션 추가!
+        });
         console.log('Socket connected:', newSocket.id);
 
         newSocket.on('connect', () => {
