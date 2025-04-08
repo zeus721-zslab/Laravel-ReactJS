@@ -19,7 +19,7 @@ export const SocketProvider = ({ children , endpoint }) => {
     }, [socket]);
 
     useEffect(() => {
-        const newSocket = socketIOClient(SOCKET_URL,{ // <-- 옵션 객체 추가
+        const newSocket = socketIOClient(SOCKET_URL,{ // <-- 옵션 객체 추가 test
             withCredentials: true // <-- 이 옵션 추가!
         });
         console.log('Socket connected:', newSocket.id);
