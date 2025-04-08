@@ -6,8 +6,8 @@ const SocketContext = createContext(null);
 
 export const useSocket = () => useContext(SocketContext);
 
-export const SocketProvider = ({ children , endpoint }) => {
-    const SOCKET_URL  = endpoint+':3001';
+export const SocketProvider = ({ children }) => {
+    const SOCKET_URL = import.meta.env.VITE_SOCKET_URL;
     const [socket, setSocket] = useState(null);
     const [socketId, setSocketId] = useState(null);
 

@@ -9,7 +9,6 @@ import { createRoot } from 'react-dom/client';
 import { SocketProvider } from './Contexts/SocketContext'; // SocketProvider 임포트 확인
 
 const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
-const ENDPOINT  = window.location.origin;
 
 createInertiaApp({
     title: (title) => `${title} - ${appName}`,
@@ -23,7 +22,7 @@ createInertiaApp({
         const root = createRoot(el);
 
         root.render(
-            <SocketProvider endpoint={ENDPOINT}>
+            <SocketProvider>
                 <App {...props} />
             </SocketProvider>
         );
