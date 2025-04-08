@@ -6,20 +6,20 @@ export default defineConfig(({ command, mode }) => {
     const env = loadEnv(mode, process.cwd(), '');
 
     console.log(command);
-    console.log(mode === 'development' ? env.SANCTUM_STATEFUL_DOMAINS_STG : env.SANCTUM_STATEFUL_DOMAINS);
-    console.log(mode === 'development' ? parseInt(env.VITE_APP_STG_PORT) : parseInt(env.VITE_APP_PORT));
+    console.log(env.SANCTUM_STATEFUL_DOMAINS);
+    console.log(env.VITE_APP_PORT);
 
     return {
         server: {
-            http : mode === 'development',
-            https: mode !== 'development', // HTTPS 옵션 객체 전달
+            http : mode === 'staging' || mode === 'development',
+            https: mode === 'production' , // HTTPS 옵션 객체 전달
             host: '0.0.0.0',
             hmr: {
-                host: mode === 'development' ? env.SANCTUM_STATEFUL_DOMAINS_STG : env.SANCTUM_STATEFUL_DOMAINS,
-                protocol: mode === 'development' ? 'ws' : 'wss' ,
-                port: mode === 'development' ? parseInt(env.VITE_APP_STG_PORT) : parseInt(env.VITE_APP_PORT),
+                host: env.SANCTUM_STATEFUL_DOMAINS,
+                protocol: env.HMR_PROTOCOL ,
+                port: env.VITE_APP_PORT,
             },
-            port: mode === 'development' ? parseInt(env.VITE_APP_STG_PORT) : parseInt(env.VITE_APP_PORT),
+            port: env.VITE_APP_PORT,
         },
         plugins: [
             laravel({
