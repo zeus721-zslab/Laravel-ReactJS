@@ -8,6 +8,7 @@ export default defineConfig(({ command, mode }) => {
     console.log(command);
     console.log(env.SANCTUM_STATEFUL_DOMAINS);
     console.log(env.VITE_APP_PORT);
+    console.log('mode' , mode);
 
     return {
         server: {
