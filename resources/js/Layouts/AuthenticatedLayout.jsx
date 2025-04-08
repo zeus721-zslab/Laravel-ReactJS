@@ -130,6 +130,7 @@ export default function AuthenticatedLayout({ header, children }) {
                         <ResponsiveNavLink href={route('dashboard')} active={route().current('dashboard')}>Dashboard</ResponsiveNavLink>
                         <ResponsiveNavLink href={route('posts.list')} active={url.startsWith('/posts')}>Posts&nbsp;[CRUD]</ResponsiveNavLink>
                         <ResponsiveNavLink href={route('changeImg')} active={url.startsWith('/changeImg')}>Change Image&nbsp;[Queue]</ResponsiveNavLink>
+                        <ResponsiveNavLink href={route('elk')} active={url.startsWith('/ELK')}>ELK</ResponsiveNavLink>
                     </div>
                     <div className="border-t border-gray-200 pb-1 pt-4">
                     {user ? (
