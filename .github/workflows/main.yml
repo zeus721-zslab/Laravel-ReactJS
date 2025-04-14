@@ -1,32 +1,43 @@
-steps:
-      # 1. 저장소 체크아웃 (변경 없음)
+name: CI/CD Pipeline for Laravel-ReactJS # 워크플로우 이름 변경 (선택사항)
+
+on:
+  push:
+    branches:
+      - main  # main 브랜치에 푸시될 때마다 실행
+
+jobs:
+  deploy: # Job ID
+    name: Deploy Laravel-ReactJS to Production # Job 이름
+    runs-on: self-hosted  # 자체 호스팅 러너에서 실행하도록 지정
+
+    # steps 키는 jobs > deploy 아래에 위치해야 합니다.
+    steps:
+      # 1. 저장소 체크아웃
       - name: Checkout code
-        uses: actions/checkout@v4 # 최신 버전 사용 권장 (v2 -> v4)
+        uses: actions/checkout@v4 # 최신 버전 사용 권장
 
-      # 1.5. 업데이트 시간 기록 (변경 없음)
-      # 참고: 이 단계는 서버에 SSH 접속을 시도하므로, 아래 5, 6단계보다 먼저 실행되면
-      #       키 설정이 안 되어 실패할 수 있습니다. 순서를 뒤로 옮기는 것을 고려해보세요.
-      #       (다만, StrictHostKeyChecking=no 옵션 때문에 키 없이도 초기 접속 자체는 될 수도 있습니다.)
-      - name: Record deployment timestamp to file
-        run: |
-          DEPLOYMENT_TIME=$(date '+%Y-%m-%d %H:%M:%S')
-          # StrictHostKeyChecking=no 옵션을 사용하고 있지만, 키 설정 후 실행이 더 안정적일 수 있습니다.
-          ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }} "echo '$DEPLOYMENT_TIME' > ~/laravel/html/storage/deployment_time.txt"
-
-      # 2. SSH 설정 (수정됨): 임시 키 파일 사용하도록 변경
-      - name: Set up SSH key for workflow # Step 이름 변경 (기존 2번 단계)
+      # 2. SSH 설정 (수정됨): 임시 키 파일 사용
+      # 참고: 키 설정 전에 SSH를 사용하는 단계가 있다면 순서 조정 필요
+      - name: Set up SSH key for workflow
         run: |
           mkdir -p ~/.ssh
           # 임시 파일 이름 사용 (예: deploy_key_laravel)
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/deploy_key_laravel
           # chmod 대상을 새 파일 이름으로 변경
           chmod 600 ~/.ssh/deploy_key_laravel
-          # ssh-keyscan 은 그대로 두거나, ssh 명령어에 StrictHostKeyChecking=no를 계속 쓴다면 생략 가능
+          # ssh-keyscan 또는 StrictHostKeyChecking=no 사용
           ssh-keyscan -H ${{ secrets.SERVER_IP }} >> ~/.ssh/known_hosts
 
-      # 3. 배포 스크립트 실행 (수정됨): ssh -i 옵션 추가
-      - name: Pull latest code and deploy on server # Step 이름 변경 (기존 3번 단계)
+      # 3. 업데이트 시간 기록 (SSH 설정 이후로 순서 변경 권장)
+      - name: Record deployment timestamp to file
         run: |
-          # -i 옵션으로 사용할 임시 키 파일 지정, StrictHostKeyChecking=no 유지 또는 제거
+          DEPLOYMENT_TIME=$(date '+%Y-%m-%d %H:%M:%S')
+          # -i 옵션 및 수정된 키 파일 사용, StrictHostKeyChecking=no 제거 또는 유지
+          ssh -i ~/.ssh/deploy_key_laravel -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }} "echo '$DEPLOYMENT_TIME' > ~/laravel/html/storage/deployment_time.txt"
+
+      # 4. 배포 스크립트 실행 (수정됨): ssh -i 옵션 추가
+      - name: Pull latest code and deploy on server
+        run: |
+          # -i 옵션으로 사용할 임시 키 파일 지정
           ssh -i ~/.ssh/deploy_key_laravel -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }} "cd ~/laravel/html && ./deploy.sh"
           # !!! deploy.sh 스크립트 경로 및 내용 확인 !!!
