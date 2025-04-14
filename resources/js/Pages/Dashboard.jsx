@@ -27,7 +27,8 @@ export default function Dashboard({ laravelVersion, phpVersion, deploymentTime }
     );
 
     // 공개 GitHub 저장소 URL을 상수로 정의합니다.
-    const RepositoryUrl = 'https://github.com/zeus721-zslab/Laravel-ReactJS';
+    const LaravelRepositoryUrl = 'https://github.com/zeus721-zslab/Laravel-ReactJS';
+    const NodeJsRepositoryUrl = 'https://github.com/zeus721-zslab/laravel_nodejs';
 
     // 아코디언 상태 관리를 위한 state (false: 닫힘, true: 열림)
     const [isChatAccordionOpen, setIsChatAccordionOpen] = useState(false);
@@ -77,61 +78,87 @@ export default function Dashboard({ laravelVersion, phpVersion, deploymentTime }
 
                             {/* 공개 저장소 링크 */}
                             <a
-                                href={RepositoryUrl} // 링크 URL
+                                href={LaravelRepositoryUrl} // 링크 URL
                                 target="_blank" // 새 탭에서 열기
                                 rel="noopener noreferrer" // 보안 및 성능 향상을 위한 속성
                                 // Tailwind CSS 클래스를 이용한 스타일링 (둥근 모서리, 패딩, 텍스트 색상, 포커스 효과, 다크모드 등)
                                 className="rounded-md py-3 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20]"
                             >
-                                Public Repository&nbsp;{svgIcon} {/* 링크 텍스트와 SVG 아이콘 표시 */}
+                                Laravel Public Repository&nbsp;{svgIcon} {/* 링크 텍스트와 SVG 아이콘 표시 */}
+                            </a>
+                            <a
+                                href={NodeJsRepositoryUrl} // 링크 URL
+                                target="_blank" // 새 탭에서 열기
+                                rel="noopener noreferrer" // 보안 및 성능 향상을 위한 속성
+                                // Tailwind CSS 클래스를 이용한 스타일링 (둥근 모서리, 패딩, 텍스트 색상, 포커스 효과, 다크모드 등)
+                                className="rounded-md py-3 ms-5 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20]"
+                            >
+                                NodeJS Public Repository&nbsp;{svgIcon} {/* 링크 텍스트와 SVG 아이콘 표시 */}
                             </a>
 
+                            <div className="mt-4 border"></div>
                             {/* 시스템 구성 정보 섹션 */}
                             <h5 className="mt-4 font-bold">@System Configure</h5> {/* 섹션 제목 */}
                             <ul className="mt-4 ps-5 flex flex-col gap-2 md:gap-1"> {/* 위쪽 마진, 디스크 불릿, 왼쪽 패딩을 가진 순서 없는 목록 */}
                                 <li className="flex md:flex-row flex-col before:content-['○'] before:absolute before:top-0 before:-left-5 relative">
-                                    <label className="font-bold md:after:content-[':'] after:w-3 after:inline-block after:text-center">Docker</label>
+                                    <label
+                                        className="font-bold md:after:content-[':'] after:w-3 after:inline-block after:text-center">Docker</label>
                                     <span>Docker version 28.0.1</span>
                                 </li>
                                 <li className="flex md:flex-row flex-col before:content-['○'] before:absolute before:top-0 before:-left-5 relative">
-                                    <label className="font-bold md:after:content-[':'] after:w-3 after:inline-block after:text-center">Docker-compose</label>
+                                    <label
+                                        className="font-bold md:after:content-[':'] after:w-3 after:inline-block after:text-center">Docker-compose</label>
                                     <span>docker-compose version 1.29.2</span>
                                 </li>
                                 {/* PHP 버전을 props에서 받아 동적으로 표시 */}
                                 <li className="flex md:flex-row flex-col before:content-['○'] before:absolute before:top-0 before:-left-5 relative">
-                                    <label className="font-bold md:after:content-[':'] after:w-3 after:inline-block after:text-center">Web Application</label>
+                                    <label
+                                        className="font-bold md:after:content-[':'] after:w-3 after:inline-block after:text-center">Web
+                                        Application</label>
                                     <span>PHP {phpVersion} - <b>Container</b></span>
                                 </li>
                                 <li className="flex md:flex-row flex-col before:content-['○'] before:absolute before:top-0 before:-left-5 relative">
-                                    <label className="font-bold md:after:content-[':'] after:w-3 after:inline-block after:text-center">Socket Application</label>
+                                    <label
+                                        className="font-bold md:after:content-[':'] after:w-3 after:inline-block after:text-center">Socket
+                                        Application</label>
                                     <span>NodeJS Express - <b>Container</b></span>
                                 </li>
                                 <li className="flex md:flex-row flex-col before:content-['○'] before:absolute before:top-0 before:-left-5 relative">
-                                    <label className="font-bold md:after:content-[':'] after:w-3 after:inline-block after:text-center">Maria DB</label>
+                                    <label
+                                        className="font-bold md:after:content-[':'] after:w-3 after:inline-block after:text-center">Maria
+                                        DB</label>
                                     <span>10.5.28-MariaDB-ubu2004 - <b>Container</b></span>
                                 </li>
                                 <li className="flex md:flex-row flex-col before:content-['○'] before:absolute before:top-0 before:-left-5 relative">
-                                    <label className="font-bold md:after:content-[':'] after:w-3 after:inline-block after:text-center">Redis DB</label>
+                                    <label
+                                        className="font-bold md:after:content-[':'] after:w-3 after:inline-block after:text-center">Redis
+                                        DB</label>
                                     <span>Redis server v=7.4.2 - <b>Container</b></span>
                                 </li>
                                 <li className="flex md:flex-row flex-col before:content-['○'] before:absolute before:top-0 before:-left-5 relative">
-                                    <label className="font-bold md:after:content-[':'] after:w-3 after:inline-block after:text-center">WebServer</label>
+                                    <label
+                                        className="font-bold md:after:content-[':'] after:w-3 after:inline-block after:text-center">WebServer</label>
                                     <span>NGINX version: nginx/1.27.4 - <b>Container</b></span>
                                 </li>
                                 <li className="flex md:flex-row flex-col before:content-['○'] before:absolute before:top-0 before:-left-5 relative">
-                                    <label className="font-bold md:after:content-[':'] after:w-3 after:inline-block after:text-center">Elastic Search</label>
+                                    <label
+                                        className="font-bold md:after:content-[':'] after:w-3 after:inline-block after:text-center">Elastic
+                                        Search</label>
                                     <span>ElasticSearch:8.13.0 - <b>Container</b></span>
                                 </li>
                                 <li className="flex md:flex-row flex-col before:content-['○'] before:absolute before:top-0 before:-left-5 relative">
-                                    <label className="font-bold md:after:content-[':'] after:w-3 after:inline-block after:text-center">LogStash</label>
+                                    <label
+                                        className="font-bold md:after:content-[':'] after:w-3 after:inline-block after:text-center">LogStash</label>
                                     <span>LogStash:8.13.0 - <b>Container</b></span>
                                 </li>
                                 <li className="flex md:flex-row flex-col before:content-['○'] before:absolute before:top-0 before:-left-5 relative">
-                                    <label className="font-bold md:after:content-[':'] after:w-3 after:inline-block after:text-center">Kibana</label>
+                                    <label
+                                        className="font-bold md:after:content-[':'] after:w-3 after:inline-block after:text-center">Kibana</label>
                                     <span>Kibana:8.13.0 - <b>Container</b></span>
                                 </li>
                                 <li className="flex md:flex-row flex-col before:content-['○'] before:absolute before:top-0 before:-left-5 relative">
-                                    <label className="font-bold md:after:content-[':'] after:w-3 after:inline-block after:text-center">CI/CD</label>
+                                    <label
+                                        className="font-bold md:after:content-[':'] after:w-3 after:inline-block after:text-center">CI/CD</label>
                                     <span>GitHubAction</span>
                                 </li>
                                 <li className="flex md:flex-row flex-col before:content-['○'] before:absolute before:top-0 before:-left-5 relative">
@@ -146,14 +173,16 @@ export default function Dashboard({ laravelVersion, phpVersion, deploymentTime }
                             <ul className="mt-4 ps-5 flex flex-col gap-2 md:gap-1"> {/* 순서 없는 목록 */}
                                 {/* Laravel 버전을 props에서 받아 동적으로 표시 */}
                                 <li className="flex md:flex-row flex-col before:content-['○'] before:absolute before:top-0 before:-left-5 relative">
-                                    <label className="font-bold md:after:content-[':'] after:w-3 after:inline-block after:text-center">Laravel</label>
+                                    <label
+                                        className="font-bold md:after:content-[':'] after:w-3 after:inline-block after:text-center">Laravel</label>
                                     <span>v{laravelVersion}</span>
                                 </li>
                                 <li className="flex md:flex-row flex-col before:content-['○'] before:absolute before:top-0 before:-left-5 relative">Inertia2</li>
                                 <li className="flex md:flex-row flex-col before:content-['○'] before:absolute before:top-0 before:-left-5 relative">Reactjs</li>
                                 <li className="flex md:flex-row flex-col before:content-['○'] before:absolute before:top-0 before:-left-5 relative">TailWind</li>
                                 <li className="flex md:flex-row flex-col before:content-['○'] before:absolute before:top-0 before:-left-5 relative">
-                                    <label className="font-bold md:after:content-[':'] after:w-3 after:inline-block after:text-center">NodeJS</label>
+                                    <label
+                                        className="font-bold md:after:content-[':'] after:w-3 after:inline-block after:text-center">NodeJS</label>
                                     <span>ExpressJS , SocketIO</span>
                                 </li>
                             </ul>
@@ -164,11 +193,14 @@ export default function Dashboard({ laravelVersion, phpVersion, deploymentTime }
                             <h5 className="mt-4 font-bold">@Libraries</h5> {/* 섹션 제목 */}
                             <ul className="mt-4 ps-5 flex flex-col gap-2 md:gap-1"> {/* 순서 없는 목록 */}
                                 <li className="flex md:flex-row flex-col before:content-['○'] before:absolute before:top-0 before:-left-5 relative">
-                                    <label className="font-bold md:after:content-[':'] after:w-3 after:inline-block after:text-center">Auth</label>
+                                    <label
+                                        className="font-bold md:after:content-[':'] after:w-3 after:inline-block after:text-center">Auth</label>
                                     <span>laravel/sanctum ^4.0</span>
                                 </li>
                                 <li className="flex md:flex-row flex-col before:content-['○'] before:absolute before:top-0 before:-left-5 relative">
-                                    <label className="font-bold md:after:content-[':'] after:w-3 after:inline-block after:text-center">Build Tool</label>
+                                    <label
+                                        className="font-bold md:after:content-[':'] after:w-3 after:inline-block after:text-center">Build
+                                        Tool</label>
                                     <span>laravel-vite-plugin ^1.2.0</span>
                                 </li>
                             </ul>
@@ -178,13 +210,18 @@ export default function Dashboard({ laravelVersion, phpVersion, deploymentTime }
                             {/* 주요 기능 섹션 */}
                             <h5 className="mt-4 font-bold">@Features</h5> {/* 섹션 제목 */}
                             <ul className="mt-4 ps-5"> {/* 순서 없는 목록 */}
-                                <li className="flex md:flex-row flex-col before:content-['○'] before:absolute before:top-0 before:-left-5 relative">Real Time System Using NodeJS SocketIO</li>
-                                <li className="flex md:flex-row flex-col before:content-['○'] before:absolute before:top-0 before:-left-5 relative">EL & Kibana Page(using Proxy)</li>
+                                <li className="flex md:flex-row flex-col before:content-['○'] before:absolute before:top-0 before:-left-5 relative">Real
+                                    Time System Using NodeJS SocketIO
+                                </li>
+                                <li className="flex md:flex-row flex-col before:content-['○'] before:absolute before:top-0 before:-left-5 relative">EL
+                                    & Kibana Page(using Proxy)
+                                </li>
                                 {/* Chatting 항목 - 아코디언 적용 */}
                                 {/* Chatting 항목 - 아코디언 적용 */}
                                 <li className="flex flex-col before:content-['○'] before:absolute before:-left-5 relative">
                                     {/* 제목과 버튼 영역 */}
-                                    <div className="flex flex-row items-center cursor-pointer" onClick={toggleChatAccordion}>
+                                    <div className="flex flex-row items-center cursor-pointer"
+                                         onClick={toggleChatAccordion}>
                                         <span>Chatting</span>
                                         <button
                                             className="ml-3 px-2.5 py-1 bg-gray-200 hover:bg-gray-300 text-gray-800 text-xs font-medium rounded shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-gray-400 transition duration-150 ease-in-out"
@@ -204,7 +241,8 @@ export default function Dashboard({ laravelVersion, phpVersion, deploymentTime }
                                         }`}
                                     >
                                         {/* 실제 내용 컨테이너 (섹션간 간격 추가) */}
-                                        <div className="p-3 mt-1 bg-slate-50 rounded border border-slate-200 text-sm text-gray-700 space-y-3">
+                                        <div
+                                            className="p-3 mt-1 bg-slate-50 rounded border border-slate-200 text-sm text-gray-700 space-y-3">
 
                                             {/* 기술 스택 섹션 */}
                                             <div>
@@ -212,7 +250,8 @@ export default function Dashboard({ laravelVersion, phpVersion, deploymentTime }
                                                 <ul className="list-disc pl-5 space-y-1">
                                                     {chatTechStack.map((item) => (
                                                         <li key={item.category}>
-                                                            <span className="font-medium text-gray-900">{item.category}:</span> {item.techs}
+                                                            <span
+                                                                className="font-medium text-gray-900">{item.category}:</span> {item.techs}
                                                         </li>
                                                     ))}
                                                 </ul>
@@ -240,25 +279,34 @@ export default function Dashboard({ laravelVersion, phpVersion, deploymentTime }
                             {/* TODO (향후 계획) 섹션 */}
                             <h5 className="mt-4 font-bold">@TODO</h5> {/* 섹션 제목 */}
                             <ul className="mt-4 list-disc ps-5"> {/* 순서 없는 목록 */}
-                                <li className="flex md:flex-row flex-col before:content-['○'] before:absolute before:top-0 before:-left-5 relative">Python & AI 기반 간단 추천 기능</li>
-                                <li className="flex md:flex-row flex-col before:content-['○'] before:absolute before:top-0 before:-left-5 relative">Docker Scaling</li>
-                                <li className="flex md:flex-row flex-col before:content-['○'] before:absolute before:top-0 before:-left-5 relative">Docker Swarm | Kubernetes
+                                <li className="flex md:flex-row flex-col before:content-['○'] before:absolute before:top-0 before:-left-5 relative">Python
+                                    & AI 기반 간단 추천 기능
+                                </li>
+                                <li className="flex md:flex-row flex-col before:content-['○'] before:absolute before:top-0 before:-left-5 relative">Docker
+                                    Scaling
+                                </li>
+                                <li className="flex md:flex-row flex-col before:content-['○'] before:absolute before:top-0 before:-left-5 relative">Docker
+                                    Swarm | Kubernetes
                                 </li>
                             </ul>
 
                         </div>
                         {/* 카드 내부 컨텐츠 끝 */}
-                    </div> {/* 첫 번째 정보 카드 끝 */}
+                    </div>
+                    {/* 첫 번째 정보 카드 끝 */}
 
                     {/* 배포 시간 정보 카드 */}
-                    <div className="mt-4 overflow-hidden bg-white shadow-sm sm:rounded-lg"> {/* 위쪽 마진, 흰색 배경, 그림자, 둥근 모서리 */}
+                    <div
+                        className="mt-4 overflow-hidden bg-white shadow-sm sm:rounded-lg"> {/* 위쪽 마진, 흰색 배경, 그림자, 둥근 모서리 */}
                         <div className="p-6 text-gray-900"> {/* 카드 내부 패딩 및 텍스트 색상 */}
                             {/* deploymentTime prop을 사용하여 마지막 배포(수정) 시간을 표시 */}
                             <span>GIT - Last Modified {deploymentTime}</span>
                         </div>
-                    </div> {/* 배포 시간 정보 카드 끝 */}
+                    </div>
+                    {/* 배포 시간 정보 카드 끝 */}
 
-                </div> {/* 최대 너비 컨테이너 끝 */}
+                </div>
+                {/* 최대 너비 컨테이너 끝 */}
             </div> {/* 페이지 메인 컨텐츠 영역 끝 */}
         </AuthenticatedLayout> // AuthenticatedLayout 컴포넌트 끝
     );
