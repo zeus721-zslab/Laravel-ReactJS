@@ -8,7 +8,11 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
         web: __DIR__.'/../routes/web.php',
         commands: __DIR__.'/../routes/console.php',
+        channels: __DIR__.'/../routes/channels.php',
         health: '/up',
+        api: __DIR__.'/../routes/api.php', // <--- 이 줄이 있는지, 경로가 맞는지 확인하세요!
+        apiPrefix: 'api', // API 라우트의 기본 접두사 (보통 'api')
+
     )
     ->withMiddleware(function (Middleware $middleware) {
         $middleware->web(append: [

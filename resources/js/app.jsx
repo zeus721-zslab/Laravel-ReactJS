@@ -22,7 +22,7 @@ createInertiaApp({
         const root = createRoot(el);
 
         root.render(
-            <SocketProvider>
+            <SocketProvider user={props.initialPage.props.auth.user}>
                 <App {...props} />
             </SocketProvider>
         );

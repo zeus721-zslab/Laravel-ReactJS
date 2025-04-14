@@ -12,13 +12,17 @@ export default function AuthenticatedLayout({ header, children }) {
     const user = page?.props?.auth?.user;
     const url  = usePage().url;
     const [showingNavigationDropdown, setShowingNavigationDropdown] = useState(false);
-    const { joinRoom } = useSocket();
+    const { joinUserChannel } = useSocket(); // <-- joinUserChannel 로 수정
 
     useEffect(() => {
-        if (user?.id) {
-            joinRoom(user.id);
+        // user?.id 와 joinUserChannel 함수가 모두 유효할 때만 호출
+        if (user?.id && joinUserChannel) {
+            console.log(`[AuthenticatedLayout] Attempting to join user channel for user: ${user.id}`);
+            // 수정 전: joinRoom(user.id);
+            // 수정 후:
+            joinUserChannel(user.id); // <-- joinUserChannel 로 수정
         }
-    }, [user?.id, joinRoom]);
+    }, [user?.id, joinUserChannel]); // 의존성 배열 확인
 
 
     return (
@@ -38,6 +42,7 @@ export default function AuthenticatedLayout({ header, children }) {
                                 <NavLink href={route('posts.list')} active={url.startsWith('/posts')} > Posts&nbsp;[CRUD] </NavLink>
                                 <NavLink href={route('changeImg')} active={url.startsWith('/changeImg')} > Change Image&nbsp;[Queue] </NavLink>
                                 <NavLink href={route('elk')} active={url.startsWith('/ELK')} > ELK </NavLink>
+                                <NavLink href={route('chat.index')} active={url.startsWith('/Chat')} > Chatting </NavLink>
                             </div>
                         </div>
 
@@ -131,6 +136,7 @@ export default function AuthenticatedLayout({ header, children }) {
                         <ResponsiveNavLink href={route('posts.list')} active={url.startsWith('/posts')}>Posts&nbsp;[CRUD]</ResponsiveNavLink>
                         <ResponsiveNavLink href={route('changeImg')} active={url.startsWith('/changeImg')}>Change Image&nbsp;[Queue]</ResponsiveNavLink>
                         <ResponsiveNavLink href={route('elk')} active={url.startsWith('/ELK')}>ELK</ResponsiveNavLink>
+                        <ResponsiveNavLink href={route('chat.index')} active={url.startsWith('/Chat')}>Chatting</ResponsiveNavLink>
                     </div>
                     <div className="border-t border-gray-200 pb-1 pt-4">
                     {user ? (

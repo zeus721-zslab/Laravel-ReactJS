@@ -158,8 +158,18 @@ return [
             'password' => env('REDIS_PASSWORD'),
             'port' => env('REDIS_PORT', '6379'),
             'database' => env('REDIS_DB', '0'),
+            'scheme' => 'tcp', // ★★★ 이 라인 추가 ★★★
+            'prefix' => false,                        // ★ 접두사 없음 ★
         ],
-
+        'redis-broadcast' => [
+            'host' => env('REDIS_HOST', '127.0.0.1'), // default와 동일한 Redis 사용
+            'username' => env('REDIS_USERNAME'),
+            'password' => env('REDIS_PASSWORD'),
+            'port' => env('REDIS_PORT', '6379'),
+            'database' => env('REDIS_DB', '0'),     // default와 동일한 DB 사용
+            'scheme' => 'tcp',                     // default와 동일한 scheme 사용
+            'prefix' => false,                        // ★ 접두사 없음 ★
+        ],
         'cache' => [
             'url' => env('REDIS_URL'),
             'host' => env('REDIS_HOST', '127.0.0.1'),
