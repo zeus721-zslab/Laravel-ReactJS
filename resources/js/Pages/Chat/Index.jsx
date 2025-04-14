@@ -2,7 +2,7 @@ import React from 'react'; // useState, useEffect는 이제 필요 없습니다.
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout'; // AuthenticatedLayout 사용
 import { Head, Link } from '@inertiajs/react'; // Inertia의 Head와 Link 컴포넌트 import
 
-// Controller에서 전달한 'auth', 'chatUsers' props를 직접 받습니다.
+// Controller에서 전달한 'auth', 'chatUsers' props를 직접 받습니다..
 export default function Index({ auth, chatUsers }) {
 
     console.log(chatUsers);
