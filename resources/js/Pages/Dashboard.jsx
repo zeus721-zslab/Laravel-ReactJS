@@ -48,7 +48,7 @@ export default function Dashboard({ laravelVersion, phpVersion, deploymentTime }
     ];
     // --- 프로세스 요약 데이터 추가 ---
     const chatProcess = [
-        '연결: 클라이언트(React) ↔ WebSocket ↔ 서버(Node.js/Socket.IO) (Nginx 경유 가능)',
+        '연결: 클라이언트(React) ↔ WebSocket ↔ 서버(Node.js/Socket.IO)',
         '메시지 송신: 클라이언트 → Node.js → (Laravel API) → DB 저장 → Redis 발행',
         '메시지 수신: Node.js (Redis 구독) → Socket.IO 브로드캐스트 → 다른 클라이언트 수신/표시',
         '읽음 처리: 클라이언트 → 서버(API/Socket) → DB 업데이트 → (실시간 전파)',
